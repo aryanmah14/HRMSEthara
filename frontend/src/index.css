@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/* 
+  Enable class-based dark mode for Tailwind 4.
+  This overrides the default media-query behavior for the `dark:` variant.
+*/
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    body {
+        @apply transition-colors duration-300 bg-white text-slate-900;
+    }
+}
+
+@layer components {
+    .glass {
+        @apply bg-white/70 backdrop-blur-md border border-white/20;
+    }
+
+    .dark .glass {
+        @apply bg-slate-900/70 backdrop-blur-md border border-slate-700/50;
+    }
+
+    /* Custom Scrollbar for premium feel */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-slate-200 rounded-full;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+        @apply bg-slate-800;
+    }
+}
+
+/* Custom theme mapping */
+@theme {
+    --color-primary: #6366f1;
+}
